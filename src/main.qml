@@ -65,6 +65,16 @@ Application {
         }
     }
 
+    function toHandsPosition(usec) {
+        var mod = Math.abs(usec)
+        return(Math.floor((mod % 60000) / 1000)*3)
+    }
+
+    PhysicalHands {
+        minuteHandPosition: toHandsPosition(elapsed.value)
+        hourHandPosition: toHandsPosition(elapsed.value)
+    }
+
     Item {
         id: mainPage
         anchors.fill: parent
