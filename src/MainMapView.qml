@@ -4,6 +4,11 @@ import QtPositioning 5.15
 import QtLocation 5.15
 
 Item {
+    Label {
+        text: "Map Data from OpenStreetMap"
+        anchors.centerIn: parent
+        z: 0
+    }
     Map {
         id: mapView
         plugin: mapProvider
@@ -20,7 +25,7 @@ Item {
         width: height
         iconColor: "blue"
         z: 2
-        onClicked: mapView.zoomLevel = mapView.zoomLevel + 0.1
+        onClicked: mapView.zoomLevel = mapView.zoomLevel + 0.3
     }
     IconButton {
         iconName: "ios-remove-circle-outline"
@@ -30,7 +35,7 @@ Item {
         width: height
         iconColor: "blue"
         z: 2
-        onClicked: mapView.zoomLevel = mapView.zoomLevel - 0.1
+        onClicked: mapView.zoomLevel = mapView.zoomLevel - 0.3
     }
     IconButton {
         iconName: "ios-locate-outline"
@@ -49,10 +54,6 @@ Item {
         width: height
         iconColor: "blue"
         z: 2
-        // Icon {
-        //     anchors.fill: parent
-        //     name: "ios-circle-outline"
-        //     // color: parent.iconColor
-        // }
+        onClicked: pageStack.push(settingsPage,{})
     }
 }

@@ -9,17 +9,12 @@ Application {
     centerColor: "#9800A6"
     outerColor: "#0C0009"
 
-    Label {
-        text: "Map Data from OpenStreetMap"
-        anchors.centerIn: parent
-        z: 0
-    }
     Plugin {
         id: mapProvider
         name: "osm"
     }
     LayerStack {
-        id: pagestack
+        id: pageStack
         anchors.fill: parent
         firstPage: mainmapview
     }
@@ -27,5 +22,9 @@ Application {
     Component {
         id: mainmapview
         MainMapView {}
+    }
+    Component {
+        id: settingsPage
+        SettingsPage {}
     }
 }
