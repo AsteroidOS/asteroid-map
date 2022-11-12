@@ -1,7 +1,10 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>DefaultMapControls.qml</file>
         <file>MainMapView.qml</file>
+        <file>SetPointMapControls.qml</file>
+        <file>SetPointPage.qml</file>
         <file>SettingsPage.qml</file>
     </qresource>
 </RCC>

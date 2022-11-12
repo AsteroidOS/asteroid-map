@@ -5,6 +5,11 @@ import QtLocation 5.15
 
 Item {
     id: root
+    // FlatMesh {
+    //     centerColor: "#003ee9"
+    //     outerColor: "#00bc1b"
+    //     anchors.fill: parent
+    // }
     PageHeader {
         text: "Map settings"
     }
