@@ -6,8 +6,8 @@ import QtLocation 5.15
 Application {
     id: app
 
-    centerColor: "#9800A6"
-    outerColor: "#0C0009"
+    centerColor: "#003ee9"
+    outerColor: "#00bc1b"
 
     Plugin {
         id: mapProvider
