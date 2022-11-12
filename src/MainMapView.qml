@@ -6,6 +6,7 @@ import QtLocation 5.15
 Item {
     Label {
         text: "Map Data from OpenStreetMap"
+        font.pixelSize: parent.width*0.02
         anchors.centerIn: parent
         z: 0
     }
