@@ -6,5 +6,6 @@
         <file>SetPointMapControls.qml</file>
         <file>SetPointPage.qml</file>
         <file>SettingsPage.qml</file>
+        <file>MapWaypoint.qml</file>
     </qresource>
 </RCC>

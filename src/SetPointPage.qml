@@ -35,7 +35,7 @@ Item {
                 height: parent.width*0.2
                 //for the default text, we probably want a date/time
                 previewText: "Waypoint name"
-                text: Date().toLocaleString(Locale.ShortFormat)
+                text: Date.toLocaleString(Locale.ShortFormat)
             }
             ListView {
                 id: iconSelectorView
@@ -89,8 +89,11 @@ Item {
     }
 
     function appendWayPoint() { //the colours.primary is currently a placeholder. it would be nice to let users select colours, but I CBA to write a colour picker right now.
-        var newWayPointString = ">" + "selectedIcon" + ";" + coord + ";" + colours.primary + ";" + textBox.text + ";" + Date()
+        var newWayPointString = selectedIcon + ";" + coord.latitude + "," + coord.longitude + ";" + colours.primary + ";" + textBox.text + ";" + Date.now() + ">"
         console.log(newWayPointString)
-        pageStack.pop()
+        waypointList.value = waypointList.value + newWayPointString
+        setPointControls.visible = false
+        mapControls.visible = true
+        pageStack.pop(pageStack.currentLayer)
     }
 }

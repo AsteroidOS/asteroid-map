@@ -2,6 +2,8 @@ import QtQuick 2.0
 import org.asteroid.controls 1.0
 import QtPositioning 5.15
 import QtLocation 5.15
+import Nemo.Configuration 1.0
+import QtSensors 5.3
 
 Application {
     centerColor: "#6e90e9"
@@ -20,10 +22,19 @@ Application {
     PositionSource {
         id: positionProvider
     }
+    Compass {
+        id: compass
+        active: enableCompass.value
+    }
     LayerStack {
         id: pageStack
         anchors.fill: parent
         firstPage: mainMapView
+    }
+    ConfigurationValue {
+        id: enableCompass
+        key: "/map/enableCompass"
+        defaultValue: true
     }
 
     Component {

@@ -5,11 +5,6 @@ import QtLocation 5.15
 
 Item {
     id: root
-    // FlatMesh {
-    //     centerColor: "#003ee9"
-    //     outerColor: "#00bc1b"
-    //     anchors.fill: parent
-    // }
     PageHeader {
         text: "Map settings"
     }
@@ -34,6 +29,13 @@ Item {
                 width: parent.width
                 height: width*0.2
                 text: "center on GPS"
+            }
+            LabeledSwitch {
+                width: parent.width
+                height: width*0.2
+                text: "enable compass"
+                Component.onCompleted: checked = enableCompass.value
+                onCheckedChanged: enableCompass.value = checked
             }
             Row {
                 width: parent.width

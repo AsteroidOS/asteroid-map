@@ -3,26 +3,40 @@ import org.asteroid.controls 1.0
 import Nemo.Configuration 1.0
 import QtPositioning 5.15
 import QtLocation 5.15
+import QtSensors 5.3
 
 Item {
     ConfigurationValue {
         id: mapZoom
-        key: "/map/zoomlevel"
+        key: "/map/view/zoomlevel"
         defaultValue: 3.4
     }
     ConfigurationValue {
         id: mapCenterLat
-        key: "/map/location/lat"
-        defaultValue: 0
+        key: "/map/view/location/lat"
+        defaultValue: ""
     }
     ConfigurationValue {
         id: mapCenterLong
-        key: "/map/location/long"
+        key: "/map/view/location/long"
+        defaultValue: ""
+    }
+    ConfigurationValue {
+        id: compassMode
+        key: "/map/view/compassMode"
         defaultValue: 0
     }
+    ConfigurationValue {
+        id: waypointSource
+        key: "/map/waypointList"
+        defaultValue: ""
+        onValueChanged: mapView.updateWaypoints()
+        Component.onCompleted: mapView.updateWaypoints()
+    }
+
     Label {
         text: "Map Data from OpenStreetMap"
-        font.pixelSize: parent.width*0.02
+        font.pixelSize: parent.width*0.03
         anchors.centerIn: parent
         z: 0
     }
@@ -42,6 +56,27 @@ Item {
                 center = positionProvider.position.coordinate
             }
         }
+        Connections {
+            target: compass
+            function onReadingChanged() {
+                if (compassMode.value == 2) {
+                    mapView.bearing = compass.reading.azimuth
+                }
+            }
+        }
+        property MapQuickItem mapItem
+        function updateWaypoints() {
+            var waypointsList = waypointSource.value.split(">")
+            for(var i = 0, size = waypointsList.length-1; i < size ; i++){
+                var currWaypointData = waypointsList[i].split(";")
+                var currWaypointCoord = currWaypointData[1].split(",")
+                mapItem = waypoint.createObject(mapView)
+                mapItem.coordinate = QtPositioning.coordinate(currWaypointCoord[0],currWaypointCoord[1])
+                mapItem.iconName = currWaypointData[0]
+                mapItem.iconColor = currWaypointData[2]
+                mapView.addMapItem(mapItem)
+            }
+        }
     }
     DefaultMapControls {
         id: mapControls
@@ -55,6 +90,11 @@ Item {
         z: 2
         function primaryButtonAction() {
              pageStack.push(setPointPage,{coord: mapView.center})
+        }
+    }
+    Component {
+        id: waypoint
+        MapWaypoint {
         }
     }
     Component {
