@@ -17,6 +17,9 @@ Application {
         id: mapProvider
         name: "osm"
     }
+    PositionSource {
+        id: positionProvider
+    }
     LayerStack {
         id: pageStack
         anchors.fill: parent

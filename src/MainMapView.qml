@@ -36,6 +36,12 @@ Item {
         Component.onCompleted: { zoomLevel = mapZoom.value; center.latitude = mapCenterLat.value; center.longitude = mapCenterLong.value; console.log(mapCenterLat.value,mapCenterLong.value)}
         onZoomLevelChanged: mapZoom.value = zoomLevel
         onCenterChanged: {mapCenterLat.value = center.latitude; mapCenterLong.value = center.longitude; console.log(center)}
+        Connections {
+            target: positionProvider
+            function onPositionChanged() {
+                center = positionProvider.position.coordinate
+            }
+        }
     }
     DefaultMapControls {
         id: mapControls

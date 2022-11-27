@@ -30,6 +30,7 @@ Item {
         width: height
         iconColor: "blue"
         z: 2
+        onClicked: positionProvider.update()
     }
     IconButton {
         iconName: "ios-menu-outline"
