@@ -29,6 +29,7 @@ Item {
         Column {
             id: contentColumn
             anchors.fill: parent
+            Item { width: parent.width ; height: root.width*0.2 }
             Asteroid.TextField {
                 id: textBox
                 width: parent.width
@@ -85,6 +86,7 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 onClicked: appendWayPoint()
             }
+            Item { width: parent.width ; height: root.width*0.2 }
         }
     }
 
