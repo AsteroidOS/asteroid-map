@@ -37,6 +37,13 @@ Item {
                 Component.onCompleted: checked = enableCompass.value
                 onCheckedChanged: enableCompass.value = checked
             }
+            LabeledSwitch {
+                width: parent.width
+                height: width*0.2
+                text: "enable GPS"
+                Component.onCompleted: checked = prioritiseGPS.value
+                onCheckedChanged: prioritiseGPS.value = checked
+            }
             Row {
                 width: parent.width
                 height: width*0.2

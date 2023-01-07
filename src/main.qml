@@ -21,6 +21,7 @@ Application {
     }
     PositionSource {
         id: positionProvider
+        preferredPositioningMethods: prioritiseGPS.value ? PositionSource.SatellitePositioningMethods : PositionSource.AllPositioningMethods
     }
     Compass {
         id: compass
@@ -36,7 +37,11 @@ Application {
         key: "/map/enableCompass"
         defaultValue: true
     }
-
+    ConfigurationValue {
+        id: prioritiseGPS
+        key: "/map/prioritiseGPS"
+        defaultValue: true
+    }
     Component {
         id: mainMapView
         MainMapView {

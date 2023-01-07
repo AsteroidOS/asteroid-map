@@ -56,7 +56,7 @@ Item {
         Connections {
             target: positionProvider
             function onPositionChanged() {
-                center = positionProvider.position.coordinate
+                mapView.center = positionProvider.position.coordinate
             }
         }
         Connections {
