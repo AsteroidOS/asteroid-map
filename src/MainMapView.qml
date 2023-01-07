@@ -30,7 +30,10 @@ Item {
         id: waypointSource
         key: "/map/waypointList"
         defaultValue: ""
-        onValueChanged: mapView.updateWaypoints()
+        onValueChanged: {
+            mapView.updateWaypoints()
+            console.log("value changed")
+        }
         Component.onCompleted: mapView.updateWaypoints()
     }
 
@@ -66,6 +69,7 @@ Item {
         }
         property MapQuickItem mapItem
         function updateWaypoints() {
+            console.log("waypoints updated")
             var waypointsList = waypointSource.value.split(">")
             for(var i = 0, size = waypointsList.length-1; i < size ; i++){
                 var currWaypointData = waypointsList[i].split(";")

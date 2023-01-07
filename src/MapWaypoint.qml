@@ -11,10 +11,17 @@ MapQuickItem {
     autoFadeIn: false
     property string iconName
     property color iconColor
-    sourceItem: Asteroid.Icon {
+    sourceItem: Asteroid.IconButton {
         width: Asteroid.Dims.w(12)
+        iconName: "waypoint"
         height: width
-        name: root.iconName
-        color: root.iconColor
+        iconColor: root.iconColor.hsvValue < 0.5 ? "white" : "black"
+        Asteroid.Icon {
+            anchors.centerIn: parent
+            width: parent.width*0.9
+            height: width
+            name: root.iconName
+            color: root.iconColor
+        }
     }
 }
