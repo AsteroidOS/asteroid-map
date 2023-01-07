@@ -16,37 +16,34 @@ Item {
         Column {
             id: contentColumn
             anchors.fill: parent
-            Item {
-                height: root.height*0.1
-                width: parent.width
-            }
+            Item { width: parent.width ; height: root.width*0.2 }
             LabeledSwitch {
                 width: parent.width
-                height: width*0.2
+                height: root.width*0.2
                 text: "show zoom controls"
             }
             LabeledSwitch {
                 width: parent.width
-                height: width*0.2
+                height: root.width*0.2
                 text: "center on GPS"
             }
             LabeledSwitch {
                 width: parent.width
-                height: width*0.2
+                height: root.width*0.2
                 text: "enable compass"
                 Component.onCompleted: checked = enableCompass.value
                 onCheckedChanged: enableCompass.value = checked
             }
             LabeledSwitch {
                 width: parent.width
-                height: width*0.2
+                height: root.width*0.2
                 text: "enable GPS"
                 Component.onCompleted: checked = prioritiseGPS.value
                 onCheckedChanged: prioritiseGPS.value = checked
             }
             Row {
                 width: parent.width
-                height: width*0.2
+                height: root.width*0.2
                 // Icon {
                 //     name: "ios-information-circle-outline"
                 //     height: parent.height
@@ -69,6 +66,7 @@ Item {
                     }
                 }
             }
+            Item { width: parent.width ; height: root.width*0.2 }
         }
     }
 }
