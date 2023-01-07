@@ -78,6 +78,7 @@ Item {
                 mapItem.coordinate = QtPositioning.coordinate(currWaypointCoord[0],currWaypointCoord[1])
                 mapItem.iconName = currWaypointData[0]
                 mapItem.iconColor = currWaypointData[2]
+                mapItem.index = i
                 mapView.addMapItem(mapItem)
             }
         }
@@ -95,6 +96,9 @@ Item {
         function primaryButtonAction() {
              pageStack.push(setPointPage,{coord: mapView.center})
         }
+    }
+    function editWaypoint(number) {
+        console.log("invoking the edit page for waypoint number ", number)
     }
     Component {
         id: waypoint

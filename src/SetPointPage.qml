@@ -6,11 +6,6 @@ import Nemo.Configuration 1.0
 
 Item {
     id: root
-    // FlatMesh {
-    //     centerColor: "#003ee9"
-    //     outerColor: "#00bc1b"
-    //     anchors.fill: parent
-    // }
     Asteroid.PageHeader {
         text: "Add waypoint"
     }
@@ -41,7 +36,7 @@ Item {
             ListView {
                 id: iconSelectorView
                 width: parent.width
-                height: width*0.2
+                height: root.height*0.2
                 orientation: ListView.Horizontal
                 model: iconModel
                 delegate: Asteroid.IconButton {
@@ -79,12 +74,23 @@ Item {
                     }
                 }
             }
-            Asteroid.IconButton {
-                width: parent.width*0.2
-                height: width
-                iconName: "ios-checkmark-circle-outline"
-                anchors.horizontalCenter: parent.horizontalCenter
-                onClicked: appendWayPoint()
+            Row {
+                height: root.width*0.2
+                width: parent.width
+                Asteroid.IconButton {
+                    height: parent.height
+                    width: height
+                    iconName: "ios-checkmark-circle-outline"
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: appendWayPoint()
+                }
+                Asteroid.IconButton {
+                    height: parent.height
+                    width: height
+                    iconName: "ios-trash-circle"
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: removeWaypoint()
+                }
             }
             Item { width: parent.width ; height: root.width*0.2 }
         }

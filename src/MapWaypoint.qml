@@ -11,6 +11,7 @@ MapQuickItem {
     autoFadeIn: false
     property string iconName
     property color iconColor
+    property int index
     sourceItem: Asteroid.IconButton {
         width: Asteroid.Dims.w(12)
         iconName: "waypoint"
@@ -23,5 +24,6 @@ MapQuickItem {
             name: root.iconName
             color: root.iconColor
         }
+        onClicked: editWaypoint(index)
     }
 }
