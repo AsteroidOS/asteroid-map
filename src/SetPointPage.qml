@@ -13,9 +13,24 @@ Item {
         id: waypointList
         key: "/map/waypointList"
         defaultValue: ""
+        Component.onCompleted: {
+            var waypointArray = JSON.parse(waypointList.value)
+            if (editMode) {
+                var currWaypointData = waypointArray[editIndex]
+                root.coord = QtPositioning.coordinate(currWaypointData[1][0],currWaypointData[1][1])
+                root.selectedIcon = currWaypointData[0]
+                root.selectedColor = currWaypointData[2]
+            } else {
+                editIndex = waypointArray.length
+                selectedColor = colours.primary
+            }
+        }
     }
     property string selectedIcon: "ios-locate-outline"
+    property string selectedColor
     property variant coord
+    property bool editMode: false
+    property int editIndex
     Flickable {
         anchors.fill: parent
         contentHeight: contentColumn.implicitHeight
@@ -77,29 +92,43 @@ Item {
             Row {
                 height: root.width*0.2
                 width: parent.width
-                Asteroid.IconButton {
-                    height: parent.height
-                    width: height
-                    iconName: "ios-checkmark-circle-outline"
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    onClicked: appendWayPoint()
-                }
+                anchors.horizontalCenter: parent.horizontalCenter
                 Asteroid.IconButton {
                     height: parent.height
                     width: height
                     iconName: "ios-trash-circle"
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    onClicked: removeWaypoint()
+                    visible: editMode
+                    onClicked: removeWaypoint(editIndex)
+                }
+                Asteroid.IconButton {
+                    height: parent.height
+                    width: height
+                    iconName: "ios-checkmark-circle-outline"
+                    onClicked: commitChanges(editIndex)
                 }
             }
             Item { width: parent.width ; height: root.width*0.2 }
         }
     }
 
-    function appendWayPoint() { //the colours.primary is currently a placeholder. it would be nice to let users select colours, but I CBA to write a colour picker right now.
-        var newWayPointString = selectedIcon + ";" + coord.latitude + "," + coord.longitude + ";" + colours.primary + ";" + textBox.text + ";" + Date.now() + ">"
-        console.log(newWayPointString)
-        waypointList.value = waypointList.value + newWayPointString
+    function commitChanges(index) {
+        var waypointArray = JSON.parse(waypointList.value)
+        var writebuffer = {}
+        writebuffer[0] = selectedIcon
+        writebuffer[1] = [coord.latitude,coord.longitude]
+        writebuffer[2] = selectedColor //the colours.primary is currently a placeholder. it would be nice to let users select colours, but I CBA to write a colour picker right now
+        writebuffer[3] = textBox.text
+        writebuffer[4] = Date.now()
+        waypointArray[index] = writebuffer
+        waypointList.value = JSON.stringify(waypointArray)
+        setPointControls.visible = false
+        mapControls.visible = true
+        pageStack.pop(pageStack.currentLayer)
+    }
+    function removeWaypoint(index) {
+        var waypointArray = JSON.parse(waypointList.value)
+        waypointArray.splice(index)
+        waypointList.value = JSON.stringify(waypointArray)
         setPointControls.visible = false
         mapControls.visible = true
         pageStack.pop(pageStack.currentLayer)

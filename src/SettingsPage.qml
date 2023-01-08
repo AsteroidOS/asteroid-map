@@ -20,16 +20,6 @@ Item {
             LabeledSwitch {
                 width: parent.width
                 height: root.width*0.2
-                text: "show zoom controls"
-            }
-            LabeledSwitch {
-                width: parent.width
-                height: root.width*0.2
-                text: "center on GPS"
-            }
-            LabeledSwitch {
-                width: parent.width
-                height: root.width*0.2
                 text: "enable compass"
                 Component.onCompleted: checked = enableCompass.value
                 onCheckedChanged: enableCompass.value = checked

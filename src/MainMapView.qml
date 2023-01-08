@@ -69,18 +69,21 @@ Item {
         }
         property MapQuickItem mapItem
         function updateWaypoints() {
-            console.log("waypoints updated")
-            var waypointsList = waypointSource.value.split(">")
-            for(var i = 0, size = waypointsList.length-1; i < size ; i++){
-                var currWaypointData = waypointsList[i].split(";")
-                var currWaypointCoord = currWaypointData[1].split(",")
+            clearMapItems()
+            var waypointsList = JSON.parse(waypointSource.value)
+            console.log(waypointsList)
+            for(var i = 0, size = waypointsList.length; i < size ; i++){
+                var currWaypointData = waypointsList[i]
                 mapItem = waypoint.createObject(mapView)
-                mapItem.coordinate = QtPositioning.coordinate(currWaypointCoord[0],currWaypointCoord[1])
+                mapItem.coordinate = QtPositioning.coordinate(currWaypointData[1][0],currWaypointData[1][1])
+                console.log(mapItem.coordinate)
                 mapItem.iconName = currWaypointData[0]
+                console.log(currWaypointData[2])
                 mapItem.iconColor = currWaypointData[2]
                 mapItem.index = i
                 mapView.addMapItem(mapItem)
             }
+            console.log("waypoints updated")
         }
     }
     DefaultMapControls {
@@ -97,8 +100,8 @@ Item {
              pageStack.push(setPointPage,{coord: mapView.center})
         }
     }
-    function editWaypoint(number) {
-        console.log("invoking the edit page for waypoint number ", number)
+    function editWaypoint(index) {
+        pageStack.push(setPointPage,{editMode: true, editIndex: index})
     }
     Component {
         id: waypoint
