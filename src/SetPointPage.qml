@@ -20,6 +20,7 @@ Item {
                 root.coord = QtPositioning.coordinate(currWaypointData[1][0],currWaypointData[1][1])
                 root.selectedIcon = currWaypointData[0]
                 root.selectedColor = currWaypointData[2]
+                textbox.text = currWaypointData[3]
             } else {
                 editIndex = waypointArray.length
                 selectedColor = colours.primary
@@ -44,9 +45,8 @@ Item {
                 id: textBox
                 width: parent.width
                 height: parent.width*0.2
-                //for the default text, we probably want a date/time
                 previewText: "Waypoint name"
-                text: Date.toLocaleString(Locale.ShortFormat)
+                text: Date.toLocaleString()
             }
             ListView {
                 id: iconSelectorView
@@ -91,7 +91,6 @@ Item {
             }
             Row {
                 height: root.width*0.2
-                width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
                 Asteroid.IconButton {
                     height: parent.height
@@ -118,7 +117,7 @@ Item {
         writebuffer[1] = [coord.latitude,coord.longitude]
         writebuffer[2] = selectedColor //the colours.primary is currently a placeholder. it would be nice to let users select colours, but I CBA to write a colour picker right now
         writebuffer[3] = textBox.text
-        writebuffer[4] = Date.now()
+        writebuffer[4] = Date
         waypointArray[index] = writebuffer
         waypointList.value = JSON.stringify(waypointArray)
         setPointControls.visible = false
