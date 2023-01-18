@@ -44,13 +44,12 @@ Item {
                     width: parent.width - parent.height
                     Label {
                         text: "Map Data © OpenStreetMap contributors"
-                        height: parent.height*0.5
                         width: parent.width
                         font.pixelSize: root.width*0.05
+                        wrapMode: Text.Wrap
                     }
                     Label {
                         text: "under the ODbL"
-                        height: parent.height*0.5
                         width: parent.width
                         font.pixelSize: root.width*0.05
                     }
