@@ -57,8 +57,9 @@ Item {
             }
             ListView {
                 id: iconSelectorView
-                width: parent.width
+                width: root.width
                 height: root.height*0.2
+                anchors.horizontalCenter: parent.horizontalCenter
                 orientation: ListView.Horizontal
                 model: iconModel
                 delegate: Asteroid.IconButton {
