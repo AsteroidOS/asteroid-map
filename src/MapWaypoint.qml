@@ -16,7 +16,7 @@ MapQuickItem {
         width: Asteroid.Dims.w(12)
         iconName: "waypoint"
         height: width
-        iconColor: root.iconColor.hsvValue < 0.5 ? "white" : "black"
+        iconColor: root.iconColor.hsvValue < 0.5 ? "#E0E0E0" : colors.primary
         Asteroid.Icon {
             anchors.centerIn: parent
             width: parent.width*0.9

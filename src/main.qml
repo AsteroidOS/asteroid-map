@@ -6,14 +6,16 @@ import Nemo.Configuration 1.0
 import QtSensors 5.3
 
 Application {
-    centerColor: "#6e90e9"
-    outerColor: "#00bc1b"
+    centerColor: colors.primary
+    outerColor: colors.secondary
     id: app
 
     Item {
-        id: colours
-        property string primary: "#0056d7"
-        property string primaryUnselected: "#3274d7"
+        id: colors
+        property string primary: "#003F1A"
+        property string secondary: "#00FCC9"
+        property string textDefault: "#FFFFFF"
+        property string textUnselected: "#999999"
     }
     Plugin {
         id: mapProvider

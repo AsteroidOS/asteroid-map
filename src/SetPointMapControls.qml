@@ -13,7 +13,7 @@ Item {
         anchors.verticalCenterOffset: - height/2 + DeviceInfo.flatTireHeight/2
         height: parent.height*0.2
         width: height
-        iconColor: "blue"
+        iconColor: colors.primary
         z: 2
         onClicked: mapView.zoomLevel = mapView.zoomLevel + 0.3
     }
@@ -24,7 +24,7 @@ Item {
         anchors.verticalCenterOffset: height/2 + DeviceInfo.flatTireHeight/2
         height: parent.height*0.2
         width: height
-        iconColor: "blue"
+        iconColor: colors.primary
         z: 2
         onClicked: mapView.zoomLevel = mapView.zoomLevel - 0.3
     }
@@ -45,7 +45,7 @@ Item {
             anchors.fill: parent
             name: compass.reading.calibrationLevel > 0 ? "ios-compass-outline" : "ios-infinite-outline"
             rotation: -45
-            color: "blue"
+            color: colors.primary
         }
     }
     IconButton {
@@ -55,7 +55,7 @@ Item {
         anchors.verticalCenterOffset: height/2 + DeviceInfo.flatTireHeight/2
         height: parent.height*0.2
         width: height
-        iconColor: "blue"
+        iconColor: colors.primary
         z: 2
     }
     IconButton {
@@ -64,7 +64,7 @@ Item {
         anchors.right: parent.horizontalCenter
         height: parent.height*0.2
         width: height
-        iconColor: "blue"
+        iconColor: colors.primary
         z: 2
         onClicked: {
             parent.visible = false
@@ -77,7 +77,7 @@ Item {
         anchors.left: parent.horizontalCenter
         height: parent.height*0.2
         width: height
-        iconColor: "blue"
+        iconColor: colors.primary
         z: 2
         onClicked: primaryButtonAction()
     }
@@ -86,6 +86,6 @@ Item {
         width: parent.width*0.1
         height: width
         name: "ios-add"
-        color: "blue"
+        color: colors.primary
     }
 }

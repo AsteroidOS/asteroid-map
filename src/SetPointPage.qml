@@ -23,7 +23,7 @@ Item {
                 textbox.text = currWaypointData[3]
             } else {
                 editIndex = waypointArray.length
-                selectedColor = colours.primary
+                selectedColor = colors.secondary
             }
         }
     }
@@ -59,7 +59,7 @@ Item {
                     onClicked: root.selectedIcon = model.name
                     height: iconSelectorView.height
                     width: height
-                    iconColor: root.selectedIcon == model.name ? colours.primary : colours.primaryUnselected
+                    iconColor: root.selectedIcon == model.name ? colors.textDefault : colors.textUnselected
                 }
                 ListModel {
                     id: iconModel
@@ -115,7 +115,7 @@ Item {
         var writebuffer = {}
         writebuffer[0] = selectedIcon
         writebuffer[1] = [coord.latitude,coord.longitude]
-        writebuffer[2] = selectedColor //the colours.primary is currently a placeholder. it would be nice to let users select colours, but I CBA to write a colour picker right now
+        writebuffer[2] = selectedColor //the colors.secondary is currently a placeholder. it would be nice to let users select colours, but I CBA to write a colour picker right now
         writebuffer[3] = textBox.text
         writebuffer[4] = Date
         waypointArray[index] = writebuffer
