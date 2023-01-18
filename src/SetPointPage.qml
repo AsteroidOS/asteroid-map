@@ -12,7 +12,7 @@ Item {
     ConfigurationValue {
         id: waypointList
         key: "/map/waypointList"
-        defaultValue: ""
+        defaultValue: "[]"
         Component.onCompleted: {
             var waypointArray = JSON.parse(waypointList.value)
             if (editMode) {

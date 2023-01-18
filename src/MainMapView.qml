@@ -29,7 +29,7 @@ Item {
     ConfigurationValue {
         id: waypointSource
         key: "/map/waypointList"
-        defaultValue: ""
+        defaultValue: "[]"
         onValueChanged: {
             mapView.updateWaypoints()
             console.log("value changed")
