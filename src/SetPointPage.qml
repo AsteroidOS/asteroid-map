@@ -20,7 +20,8 @@ Item {
                 root.coord = QtPositioning.coordinate(currWaypointData[1][0],currWaypointData[1][1])
                 root.selectedIcon = currWaypointData[0]
                 root.selectedColor = currWaypointData[2]
-                textbox.text = currWaypointData[3]
+                textBox.text = currWaypointData[3]
+                dateLabel.text = Qt.formatDateTime(currWaypointData[4])
             } else {
                 editIndex = waypointArray.length
                 selectedColor = colors.secondary
@@ -46,7 +47,13 @@ Item {
                 width: parent.width
                 height: parent.width*0.2
                 previewText: "Waypoint name"
-                text: Date.toLocaleString()
+                text: Qt.formatDateTime(new Date)
+            }
+            Asteroid.Label {
+                id: dateLabel
+                width: parent.width
+                height: root.width*0.1
+                visible: editMode
             }
             ListView {
                 id: iconSelectorView
@@ -117,7 +124,7 @@ Item {
         writebuffer[1] = [coord.latitude,coord.longitude]
         writebuffer[2] = selectedColor //the colors.secondary is currently a placeholder. it would be nice to let users select colours, but I CBA to write a colour picker right now
         writebuffer[3] = textBox.text
-        writebuffer[4] = Date
+        writebuffer[4] = new Date()
         waypointArray[index] = writebuffer
         waypointList.value = JSON.stringify(waypointArray)
         setPointControls.visible = false
