@@ -44,6 +44,9 @@ Item {
             }
         }
     }
+    Asteroid.HandWritingKeyboard {
+        anchors.fill: parent
+    }
     property string selectedIcon: "ios-locate-outline"
     property string selectedColor
     property variant coord
@@ -58,6 +61,7 @@ Item {
             id: contentColumn
             anchors.fill: parent
             Item { width: parent.width ; height: root.width*0.2 }
+
             Asteroid.TextField {
                 id: textBox
                 width: parent.width
@@ -65,6 +69,7 @@ Item {
                 previewText: "Waypoint name"
                 text: Qt.formatDateTime(new Date)
             }
+
             Asteroid.Label {
                 id: dateLabel
                 width: parent.width
