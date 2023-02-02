@@ -22,5 +22,6 @@ add_subdirectory(src)
 build_translations(i18n)
 generate_desktop(${CMAKE_SOURCE_DIR} asteroid-map)
 install(FILES waypoint.svg DESTINATION /usr/share/icons/asteroid/)
+install(FILES ios-topographic-outline.svg DESTINATION /usr/share/icons/asteroid/)
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)

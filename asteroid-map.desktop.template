@@ -2,6 +2,6 @@
 Type=Application
 Categories=Applications;
 Exec=invoker --single-instance --type=qtcomponents-qt5 /usr/bin/asteroid-map
-Icon=ios-map-outline
+Icon=ios-topographic-outline
 X-Asteroid-Center-Color=#003F1A
 X-Asteroid-Outer-Color=#00FCC9
