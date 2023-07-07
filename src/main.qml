@@ -22,8 +22,8 @@ import Nemo.Configuration 1.0
 import QtSensors 5.3
 
 Application {
-    centerColor: colors.primary
-    outerColor: colors.secondary
+    centerColor: colors.secondary
+    outerColor: colors.primary
     id: app
 
     Item {
