@@ -27,8 +27,6 @@ Item {
     Flickable {
         anchors.fill: parent
         contentHeight: contentColumn.implicitHeight
-        anchors.leftMargin: root.width*0.15
-        anchors.rightMargin: root.width*0.15
         Column {
             id: contentColumn
             anchors.fill: parent
@@ -49,7 +47,8 @@ Item {
             }
             Item { width: parent.width ; height: root.width*0.2 }
             Column {
-                width: parent.width
+                width: parent.width*0.7
+                anchors.horizontalCenter: parent.horizontalCenter
                 Label {
                     text: "Map Data © OpenStreetMap contributors"
                     width: parent.width
