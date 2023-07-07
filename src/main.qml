@@ -28,8 +28,8 @@ Application {
 
     Item {
         id: colors
-        property string primary: "#003F1A"
-        property string secondary: "#00FCC9"
+        property string primary: "#00382d"
+        property string secondary: "#00c9a0"
         property string textDefault: "#FFFFFF"
         property string textUnselected: "#999999"
     }
