@@ -23,7 +23,7 @@ import Nemo.Configuration 1.0
 Item {
     id: root
     Asteroid.PageHeader {
-        text: "Add waypoint"
+        text: editMode ? "Edit waypoint" : "Add waypoint"
     }
     ConfigurationValue {
         id: waypointList
