@@ -23,7 +23,7 @@ Item {
         iconName: "ios-add-circle-outline"
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: - height/2 + DeviceInfo.flatTireHeight/2
+        anchors.verticalCenterOffset: - height/2 + DeviceSpecs.flatTireHeight/2
         height: parent.height*0.2
         width: height
         iconColor: colors.primary
@@ -34,7 +34,7 @@ Item {
         iconName: "ios-remove-circle-outline"
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: height/2 + DeviceInfo.flatTireHeight/2
+        anchors.verticalCenterOffset: height/2 + DeviceSpecs.flatTireHeight/2
         height: parent.height*0.2
         width: height
         iconColor: colors.primary
@@ -44,7 +44,7 @@ Item {
     MouseArea {
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: - height/2 + DeviceInfo.flatTireHeight/2
+        anchors.verticalCenterOffset: - height/2 + DeviceSpecs.flatTireHeight/2
         height: parent.height*0.2
         width: height
         z: 2
@@ -64,7 +64,7 @@ Item {
     IconButton {
         iconName: "ios-locate-outline"
         anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: height/2 + DeviceInfo.flatTireHeight/2
+        anchors.verticalCenterOffset: height/2 + DeviceSpecs.flatTireHeight/2
         anchors.left: parent.left
         height: parent.height*0.2
         width: height
