@@ -14,11 +14,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-import QtQuick 2.0
-import org.asteroid.controls 1.0 as Asteroid
-import QtPositioning 5.15
-import QtLocation 5.15
-import Nemo.Configuration 1.0
+import QtQuick
+import org.asteroid.controls as Asteroid
+import QtPositioning
+import QtLocation
+import Nemo.Configuration
 
 Item {
     id: root
