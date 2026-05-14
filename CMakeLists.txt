@@ -1,8 +1,10 @@
 cmake_minimum_required(VERSION 3.6.0)
 
-project(asteroid-map
+project(
+	asteroid-map
 	VERSION 2.1.0
-	DESCRIPTION "Map app for AsteroidOS")
+	DESCRIPTION "Map app for AsteroidOS"
+)
 
 find_package(ECM REQUIRED NO_MODULE)
 find_package(AsteroidApp REQUIRED)
