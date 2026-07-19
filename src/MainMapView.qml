@@ -68,7 +68,33 @@ Item {
         z: 1
         Component.onCompleted: { zoomLevel = mapZoom.value; center.latitude = mapCenterLat.value; center.longitude = mapCenterLong.value; console.log(mapCenterLat.value,mapCenterLong.value)}
         onZoomLevelChanged: mapZoom.value = zoomLevel
-        onCenterChanged: {mapCenterLat.value = center.latitude; mapCenterLong.value = center.longitude; console.log(center)}
+
+        PinchHandler {
+            id: pinch
+            target: null
+            onActiveChanged: if (active) {
+                mapView.startCentroid = mapView.toCoordinate(pinch.centroid.position, false)
+            }
+            onScaleChanged: (delta) => {
+                mapView.zoomLevel += Math.log2(delta)
+                mapView.alignCoordinateToPoint(mapView.startCentroid, pinch.centroid.position)
+            }
+            onRotationChanged: (delta) => {
+                mapView.bearing -= delta
+                mapView.alignCoordinateToPoint(mapView.startCentroid, pinch.centroid.position)
+            }
+            grabPermissions: PointerHandler.TakeOverForbidden
+        }
+        WheelHandler {
+            id: wheel
+            rotationScale: 1/120
+            property: "zoomLevel"
+        }
+        DragHandler {
+            id: drag
+            target: null
+            onTranslationChanged: (delta) => mapView.pan(-delta.x, -delta.y)
+        }
         Connections {
             target: positionProvider
             function onPositionChanged() {
