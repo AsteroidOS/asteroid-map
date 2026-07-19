@@ -66,8 +66,18 @@ Item {
         copyrightsVisible: false //this is compensated by showing the copyright when application is loading
         color: "#00000000"
         z: 1
-        Component.onCompleted: { zoomLevel = mapZoom.value; center.latitude = mapCenterLat.value; center.longitude = mapCenterLong.value; console.log(mapCenterLat.value,mapCenterLong.value)}
-        onZoomLevelChanged: mapZoom.value = zoomLevel
+        Component.onCompleted: {
+            zoomLevel = mapZoom.value
+            //the precision of the saved value seems to get truncated by nemo-configuration or its backend.
+            //multiply by a million to prevent the value getting 'rounded'
+            center.latitude = mapCenterLat.value/1000000
+            center.longitude = mapCenterLong.value/1000000
+        }
+        Component.onDestruction: {
+            mapZoom.value = zoomLevel
+            mapCenterLat.value = center.latitude*1000000
+            mapCenterLong.value = center.longitude*1000000
+        }
 
         PinchHandler {
             id: pinch
