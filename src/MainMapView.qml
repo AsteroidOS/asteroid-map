@@ -20,29 +20,34 @@ import Nemo.Configuration
 import QtPositioning
 import QtLocation
 import QtSensors
+import "mapControls"
 
 Item {
-    ConfigurationValue {
+    id: mapViewRoot
+    required property ConfigurationValue enableCompass
+    required property PositionSource positionSource
+    required property Compass compass
+    property ConfigurationValue mapZoom: ConfigurationValue {
         id: mapZoom
         key: "/map/view/zoomlevel"
         defaultValue: 3.4
     }
-    ConfigurationValue {
+    property ConfigurationValue mapCenterLat: ConfigurationValue {
         id: mapCenterLat
         key: "/map/view/location/lat"
         defaultValue: ""
     }
-    ConfigurationValue {
+    property ConfigurationValue mapCenterLong: ConfigurationValue {
         id: mapCenterLong
         key: "/map/view/location/long"
         defaultValue: ""
     }
-    ConfigurationValue {
+    property ConfigurationValue compassMode: ConfigurationValue {
         id: compassMode
         key: "/map/view/compassMode"
         defaultValue: 0
     }
-    ConfigurationValue {
+    property ConfigurationValue waypointSource: ConfigurationValue {
         id: waypointSource
         key: "/map/waypointList"
         defaultValue: "[]"
@@ -59,6 +64,7 @@ Item {
         anchors.centerIn: parent
         z: 0
     }
+    property Map mapView: mapView
     Map {
         id: mapView
         plugin: mapProvider
@@ -106,9 +112,9 @@ Item {
             onTranslationChanged: (delta) => mapView.pan(-delta.x, -delta.y)
         }
         Connections {
-            target: positionProvider
+            target: positionSource
             function onPositionChanged() {
-                mapView.center = positionProvider.position.coordinate
+                mapView.center = positionSource.position.coordinate
             }
         }
         Connections {
@@ -142,12 +148,24 @@ Item {
         id: mapControls
         anchors.fill: parent
         z: 2
+
+        mapView: mapViewRoot.mapView
+        compass: mapViewRoot.compass
+        compassMode: mapViewRoot.compassMode
+        enableCompass: mapViewRoot.enableCompass
+        positionSource: mapViewRoot.positionSource
     }
     SetPointMapControls {
         id: setPointControls
         anchors.fill: parent
         visible: false
         z: 2
+
+        mapView: mapViewRoot.mapView
+        compass: mapViewRoot.compass
+        compassMode: mapViewRoot.compassMode
+        enableCompass: mapViewRoot.enableCompass
+        positionSource: mapViewRoot.positionSource
         function primaryButtonAction() {
              pageStack.push(setPointPage,{coord: mapView.center})
         }

@@ -37,11 +37,11 @@ Application {
         id: mapProvider
         name: "osm"
     }
-    PositionSource {
-        id: positionProvider
+    property PositionSource positionSource: PositionSource {
+        id: positionSource
         preferredPositioningMethods: prioritiseGPS.value ? PositionSource.SatellitePositioningMethods : PositionSource.AllPositioningMethods
     }
-    Compass {
+    property Compass compass: Compass {
         id: compass
         active: enableCompass.value
     }
@@ -50,12 +50,12 @@ Application {
         anchors.fill: parent
         firstPage: mainMapView
     }
-    ConfigurationValue {
+    property ConfigurationValue enableCompass: ConfigurationValue {
         id: enableCompass
         key: "/map/enableCompass"
         defaultValue: true
     }
-    ConfigurationValue {
+    property ConfigurationValue prioritiseGPS: ConfigurationValue {
         id: prioritiseGPS
         key: "/map/prioritiseGPS"
         defaultValue: true
@@ -63,6 +63,9 @@ Application {
     Component {
         id: mainMapView
         MainMapView {
+            enableCompass: app.enableCompass
+            compass: app.compass
+            positionSource: app.positionSource
         }
     }
     Component {
