@@ -143,6 +143,13 @@ Item {
                 onMapWaypointsList.push(mapItem)
             }
         }
+        MapCircle {
+            center: mapViewRoot.positionSource.position.coordinate
+            radius: mapViewRoot.positionSource.position.horizontalAccuracyValid ? mapViewRoot.positionSource.position.horizontalAccuracy : 1
+            border.width: 3
+            border.color: colors.primary
+            color: Qt.alpha(colors.primary, 0.3)
+        }
     }
     DefaultMapControls {
         id: mapControls
