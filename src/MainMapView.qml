@@ -112,12 +112,6 @@ Item {
             onTranslationChanged: (delta) => mapView.pan(-delta.x, -delta.y)
         }
         Connections {
-            target: positionSource
-            function onPositionChanged() {
-                mapView.center = positionSource.position.coordinate
-            }
-        }
-        Connections {
             target: compass
             function onReadingChanged() {
                 if (compassMode.value == 2) {

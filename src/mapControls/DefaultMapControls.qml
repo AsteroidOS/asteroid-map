@@ -64,6 +64,7 @@ Item {
     }
     RecenterButton {
         positionSource: controlsRoot.positionSource
+        mapView: controlsRoot.mapView
 
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter

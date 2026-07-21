@@ -1,0 +1,7 @@
+install(FILES ios-locate-frame.svg DESTINATION /usr/share/icons/asteroid/)
+install(FILES ios-locate-dot-outline.svg DESTINATION /usr/share/icons/asteroid/)
+install(FILES ios-locate-dot-filled.svg DESTINATION /usr/share/icons/asteroid/)
+install(FILES ios-locate-dot-alert.svg DESTINATION /usr/share/icons/asteroid/)
+install(FILES ios-locate-lock.svg DESTINATION /usr/share/icons/asteroid/)
+install(FILES waypoint.svg DESTINATION /usr/share/icons/asteroid/)
+install(FILES ios-topographic-outline.svg DESTINATION /usr/share/icons/asteroid/)
