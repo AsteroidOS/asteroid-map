@@ -119,14 +119,20 @@ Item {
                 }
             }
         }
-        property MapQuickItem mapItem
+        property list<QtObject> onMapWaypointsList
+        function clearWaypoints() {
+            for(var i = 0; i < onMapWaypointsList.length; i++) {
+                mapView.removeMapItem(onMapWaypointsList[i])
+                onMapWaypointsList[i].destroy()
+            }
+            onMapWaypointsList.length = 0
+        }
         function updateWaypoints() {
-            clearMapItems()
             var waypointsList = JSON.parse(waypointSource.value)
-            console.log(waypointsList)
+            clearWaypoints()
             for(var i = 0, size = waypointsList.length; i < size ; i++){
                 var currWaypointData = waypointsList[i]
-                mapItem = waypoint.createObject(mapView)
+                var mapItem = waypoint.createObject(mapView)
                 mapItem.coordinate = QtPositioning.coordinate(currWaypointData[1][0],currWaypointData[1][1])
                 console.log(mapItem.coordinate)
                 mapItem.iconName = currWaypointData[0]
@@ -134,8 +140,8 @@ Item {
                 mapItem.iconColor = currWaypointData[2]
                 mapItem.index = i
                 mapView.addMapItem(mapItem)
+                onMapWaypointsList.push(mapItem)
             }
-            console.log("waypoints updated")
         }
     }
     DefaultMapControls {
