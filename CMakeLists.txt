@@ -20,11 +20,10 @@ include(Asteroid6Translations)
 ecm_find_qmlmodule(Nemo.Configuration 1.0)
 
 add_subdirectory(src)
+add_subdirectory(icons)
 
 build_translations(i18n)
 generate_desktop(${CMAKE_SOURCE_DIR} asteroid-map)
-install(FILES waypoint.svg DESTINATION /usr/share/icons/asteroid/)
-install(FILES ios-topographic-outline.svg DESTINATION /usr/share/icons/asteroid/)
 
 configure_file(
         ${CMAKE_CURRENT_SOURCE_DIR}/asteroid-map.in

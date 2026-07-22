@@ -1,11 +1,14 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>DefaultMapControls.qml</file>
         <file>MainMapView.qml</file>
-        <file>SetPointMapControls.qml</file>
         <file>SetPointPage.qml</file>
         <file>SettingsPage.qml</file>
         <file>MapWaypoint.qml</file>
+        <file>mapControls/DefaultMapControls.qml</file>
+        <file>mapControls/SetPointMapControls.qml</file>
+        <file>mapControls/CompassButton.qml</file>
+        <file>mapControls/RecenterButton.qml</file>
+        <file>mapControls/ZoomButton.qml</file>
     </qresource>
 </RCC>
