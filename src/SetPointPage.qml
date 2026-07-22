@@ -155,7 +155,7 @@ Item {
     }
     function removeWaypoint(index) {
         var waypointArray = JSON.parse(waypointList.value)
-        waypointArray.splice(index)
+        waypointArray.splice(index,1)
         waypointList.value = JSON.stringify(waypointArray)
         setPointControls.visible = false
         mapControls.visible = true
